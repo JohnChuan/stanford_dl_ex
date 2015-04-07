@@ -22,3 +22,18 @@ function [f,g] = logistic_regression(theta, X,y)
   %        up the gradients (df/dtheta) for each example. Store the result in 'g'.
   %
 %%% YOUR CODE HERE %%%
+
+% compute the probability of x
+h = sigmoid(X' * theta);
+error = h - y';
+% compute the cost function
+f = -sum(y * log(h) + (1 - y) * log(1 - h));
+% compute the gradient
+g = X * error;
+
+% add the sigmoid function
+function s = sigmoid(z)
+  s = 1 ./ (1 + exp(-z));
+end
+
+end
