@@ -22,3 +22,10 @@ function [f,g] = linear_regression(theta, X,y)
   %        computed gradient in 'g'.
   
 %%% YOUR CODE HERE %%%
+
+predictions = X' * theta;
+error = predictions - y';
+% compute the linear regression objective J (f)
+f = sum(error .^ 2) / (2 * m);
+% compute gradient of the objective with respect to theta
+g = X * error;
